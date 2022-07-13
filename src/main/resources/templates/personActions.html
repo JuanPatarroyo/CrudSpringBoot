@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Person's Form</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div>Person's Form</div>
+        <a th:href="@{/}">Back to index</a>
+        <br/>
+        <form th:action="@{/addNewPerson}" method="post" th:object="${person}">
+            <label for="name">Name: </label>
+            <input type="text" id="name" th:field="*{name}"/>
+            <br/>
+            <label for="surname">Surname: </label>
+            <input type="text" id="surname" th:field="*{surname}"/>
+            <br/>
+            <label for="email">Email: </label>
+            <input type="email" id="email" th:field="*{email}"/>
+            <br/>
+            <label for="phone">Phone: </label>
+            <input type="tel" id="phone" th:field="*{phone}"/>
+            <br/>
+            <input type="submit" name="save" value="Add person"/>
+        </form>
+    </body>
+</html>

@@ -5,12 +5,14 @@
  */
 package co.com.web;
 
+import co.com.domain.Person;
 import co.com.service.PersonService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
@@ -30,4 +32,16 @@ public class MainController {
         model.addAttribute("people", people);
         return "index";
     }
+    
+    @GetMapping("/actionPerson")
+    public String actionPerson(Person person){
+        return "personActions";
+    }
+    
+    @PostMapping("/addNewPerson")
+    public String addNewPerson(Person person){
+        personService.save(person);
+        return "redirect:/";
+    }
+    
 }
