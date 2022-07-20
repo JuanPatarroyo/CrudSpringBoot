@@ -12,16 +12,20 @@
             <div th:if="${people != null and !people.empty}">
                 <table class="table" border="1">
                     <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
+                        <th>Name</th>
+                        <th>Surname</th>
                         <th>Email</th>
-                        <th>Teléfono</th>
+                        <th>Phone</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                     <tr th:each="person : ${people}">
-                        <td th:text="${person.name}"></td>
-                        <td th:text="${person.surname}"></td>
-                        <td th:text="${person.email}"></td>
-                        <td th:text="${person.phone}"></td>
+                        <td th:text="${person.name}">Show name</td>
+                        <td th:text="${person.surname}">Show surname</td>
+                        <td th:text="${person.email}">Show email</td>
+                        <td th:text="${person.phone}">Show phone</td>
+                        <td><a th:href="@{/update/} + ${person.idPersona}" th:text="Edit"/></td>
+                        <td><a th:href="@{/delete(idPersona=${person.idPersona})}" th:text="Delete"/></td>
                     </tr>
                 </table>
             </div>

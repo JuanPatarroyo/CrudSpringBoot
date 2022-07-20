@@ -15,7 +15,8 @@ and open the template in the editor.
         <div>Person's Form</div>
         <a th:href="@{/}">Back to index</a>
         <br/>
-        <form th:action="@{/addNewPerson}" method="post" th:object="${person}">
+        <form th:action="@{/save}" method="post" th:object="${person}">
+            <input type="hidden" name="idPerson" th:field="*{idPersona}"/>
             <label for="name">Name: </label>
             <input type="text" id="name" th:field="*{name}"/>
             <br/>
@@ -28,7 +29,7 @@ and open the template in the editor.
             <label for="phone">Phone: </label>
             <input type="tel" id="phone" th:field="*{phone}"/>
             <br/>
-            <input type="submit" name="save" value="Add person"/>
+            <input type="submit" name="save" value="Save"/>
         </form>
     </body>
 </html>
