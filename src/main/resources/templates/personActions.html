@@ -19,12 +19,15 @@ and open the template in the editor.
             <input type="hidden" name="idPerson" th:field="*{idPersona}"/>
             <label for="name">Name: </label>
             <input type="text" id="name" th:field="*{name}"/>
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">The name shouldn't be null</span>
             <br/>
             <label for="surname">Surname: </label>
             <input type="text" id="surname" th:field="*{surname}"/>
+            <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">The surname shouldn't be null</span>
             <br/>
             <label for="email">Email: </label>
-            <input type="email" id="email" th:field="*{email}"/>
+            <input type="text" id="email" th:field="*{email}"/>
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">The email shouldn't be null or be incorrect format</span>
             <br/>
             <label for="phone">Phone: </label>
             <input type="tel" id="phone" th:field="*{phone}"/>

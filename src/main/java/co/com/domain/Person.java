@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import lombok.Data;
 
 /**
@@ -28,22 +30,18 @@ public class Person implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPersona;
     @Column(name="nombre")
+    @NotEmpty
     private String name;
     @Column(name="apellido")
+    @NotEmpty
     private String surname;
+    @NotEmpty
+    @Email
     private String email;
     @Column(name="telefono")
     private String phone;
 
     public Person() {
     }
-
-    public Person(String name, String surname, String email, String phone) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.phone = phone;
-    }
-    
     
 }
