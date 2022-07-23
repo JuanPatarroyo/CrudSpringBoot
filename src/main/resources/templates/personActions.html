@@ -12,6 +12,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
+        <header th:replace="layout/template :: header"></header>
         <div>Person's Form</div>
         <a th:href="@{/}">Back to index</a>
         <br/>
@@ -34,5 +35,6 @@ and open the template in the editor.
             <br/>
             <input type="submit" name="save" value="Save"/>
         </form>
+        <footer th:replace="layout/template :: footer"></footer>
     </body>
 </html>
