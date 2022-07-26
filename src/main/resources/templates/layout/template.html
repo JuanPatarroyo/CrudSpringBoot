@@ -7,10 +7,10 @@
     </head>
     <body>
         <header th:fragment="header">
-            <h1>Client's Control</h1>
+            <h1 th:text="#{template.title}">...</h1>
         </header>
         <footer th:fragment="footer">
-            <p>Just a footer</p>
+            <p>[[#{template.footer}]]</p>
         </footer>
     </body>
 </html>

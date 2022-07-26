@@ -7,30 +7,30 @@
     </head>
     <body>
         <header th:replace="layout/template :: header"></header>
-        <a th:href="@{/actionPerson}">Create new person</a>
+        <a th:href="@{/actionPerson}">[[#{template.person.labelNew}]]</a>
         <div>
             <div th:if="${people != null and !people.empty}">
                 <table class="table" border="1">
                     <tr>
-                        <th>Name</th>
-                        <th>Surname</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th>[[#{template.person.name}]]</th>
+                        <th>[[#{template.person.surname}]]</th>
+                        <th>[[#{template.person.email}]]</th>
+                        <th>[[#{template.person.phone}]]</th>
+                        <th>[[#{template.person.edit}]]</th>
+                        <th>[[#{template.person.delete}]]</th>
                     </tr>
                     <tr th:each="person : ${people}">
                         <td th:text="${person.name}">Show name</td>
                         <td th:text="${person.surname}">Show surname</td>
                         <td th:text="${person.email}">Show email</td>
                         <td th:text="${person.phone}">Show phone</td>
-                        <td><a th:href="@{/update/} + ${person.idPersona}" th:text="Edit"/></td>
-                        <td><a th:href="@{/delete(idPersona=${person.idPersona})}" th:text="Delete"/></td>
+                        <td><a th:href="@{/update/} + ${person.idPersona}" />[[#{template.person.edit}]]</td>
+                        <td><a th:href="@{/delete(idPersona=${person.idPersona})}"/>[[#{template.person.delete}]]</td>
                     </tr>
                 </table>
             </div>
             <div th:if="${people == null or people.empty}">
-                La lista de personas está vacía.
+                [[#{template.person.empty}]]
             </div>
         </div>
         <footer th:replace="layout/template :: footer"></footer>
