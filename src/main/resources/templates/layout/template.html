@@ -10,7 +10,11 @@
             <h1 th:text="#{template.title}">...</h1>
         </header>
         <footer th:fragment="footer">
-            <p>[[#{template.footer}]]</p>
+            <div>
+                <a th:href="@{/(lang=es)}">Español</a> ||
+                <a th:href="@{/(lang=en)}">English</a>
+                <span>[[#{template.footer}]]</span>
+            </div>
         </footer>
     </body>
 </html>
