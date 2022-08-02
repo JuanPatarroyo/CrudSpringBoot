@@ -10,6 +10,8 @@ import co.com.service.PersonService;
 import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -29,9 +31,10 @@ public class MainController {
     private PersonService personService;
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, @AuthenticationPrincipal User user) {
         var people = personService.getPeople();
         log.info("Executing Spring MVC controller...");
+        log.info("User: "+user);
         model.addAttribute("people", people);
         return "index";
     }
