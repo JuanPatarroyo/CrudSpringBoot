@@ -5,13 +5,13 @@
  */
 package co.com.dao;
 
-import co.com.domain.Person;
+import co.com.domain.UserControl;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author jpatarroyo
  */
-public interface InterfacePersonDao extends JpaRepository<Person, Long> {
-    
+public interface InterfaceUserDao extends JpaRepository<UserControl, Long>{
+    UserControl findByUserName(String username);
 }
