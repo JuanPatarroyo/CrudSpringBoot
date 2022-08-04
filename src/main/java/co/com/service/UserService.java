@@ -1,9 +1,9 @@
 package co.com.service;
 
-import co.com.dao.InterfaceUserDao;
-import co.com.domain.UserControl;
 import java.util.ArrayList;
 import lombok.extern.slf4j.Slf4j;
+import co.com.dao.InterfaceUserDao;
+import co.com.domain.UserControl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,7 +28,7 @@ public class UserService implements UserDetailsService{
     @Override
     @Transactional(readOnly=true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserControl user = userDao.findByUserName(username);
+        UserControl user = userDao.findByUsername(username);
         if(user == null){
             throw new UsernameNotFoundException(username);
         }
@@ -36,7 +36,7 @@ public class UserService implements UserDetailsService{
         user.getRoles().forEach((rol -> {
             roles.add(new SimpleGrantedAuthority(rol.getName()));
         }));
-        return new User(user.getUserName(), user.getPassword(), roles);
+        return new User(user.getUsername(), user.getPassword(), roles);
     }
     
 }

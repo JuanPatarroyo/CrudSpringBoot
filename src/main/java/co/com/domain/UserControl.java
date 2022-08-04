@@ -24,17 +24,22 @@ import lombok.Data;
 @Data
 @Table(name="user_control")
 public class UserControl {
+    
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUser;
     
     @NotEmpty
-    private String userName;
+    private String username;
     @NotEmpty
     private String password;
     
     @OneToMany
     @JoinColumn(name="id_user")
     private List<Role> roles;
+
+    public UserControl() {
+    }
 }

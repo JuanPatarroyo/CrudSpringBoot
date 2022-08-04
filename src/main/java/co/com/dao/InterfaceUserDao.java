@@ -13,5 +13,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author jpatarroyo
  */
 public interface InterfaceUserDao extends JpaRepository<UserControl, Long>{
-    UserControl findByUserName(String username);
+    UserControl findByUsername(String username);
 }
