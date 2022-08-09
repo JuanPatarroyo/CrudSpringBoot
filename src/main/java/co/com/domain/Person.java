@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 /**
@@ -40,6 +41,9 @@ public class Person implements Serializable {
     private String email;
     @Column(name="telefono")
     private String phone;
+    @Column(name="saldo")
+    @NotNull
+    private Double balance;
 
     public Person() {
     }
