@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Edit Client</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <section th:fragment="editClient">
+            <form th:action="@{/save}" method="post" th:object="${person}" class="was-validated">
+                <input type="hidden" name="idPerson" th:field="*{idPersona}"/>
+                <section th:replace="layout/buttons :: editButtons"></section>
+                <div id="details">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>[[#{template.person.edit}]]</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="name">[[#{template.person.name}]]</label>
+                                            <input type="text" id="name" class="form-control" required="true" 
+                                                   th:field="*{name}"/>  
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="surname">[[#{template.person.surname}]]</label>
+                                            <input type="text" id="surname" class="form-control" required="true" 
+                                                   th:field="*{surname}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">[[#{template.person.email}]]</label>
+                                            <input type="text" id="email" class="form-control" required="true" 
+                                                   th:field="*{email}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone">[[#{template.person.phone}]]</label>
+                                            <input type="tel" id="phone" class="form-control" th:field="*{phone}"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="balance">[[#{template.person.balance}]]</label>
+                                            <input type="number" step="any" id="balance" class="form-control" required="true" 
+                                                   th:field="*{balance}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </body>
+</html>

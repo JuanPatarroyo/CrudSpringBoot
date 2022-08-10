@@ -7,13 +7,38 @@
         <meta charset="UTF-8"/>
     </head>
     <body>
+        <!-- buttons to index page -->
         <section th:fragment="buttons" class="py-4 mb-4 bg-light">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
-                        <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addClient">
+                        <a href="#" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#addClient">
                             <i class="fas fa-plus"></i> [[#{template.person.labelNew}]]
                         </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- buttons to update page -->
+        <section th:fragment="editButtons">
+            <div id="actions" class="py-4 mb-4 bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a th:href="@{/}" class="btn btn-ligth btn-block">
+                                <i class="fas fa-arrow-left"></i> [[#{template.person.back}]]
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fas fa-check"></i> [[#{template.person.edit}]]
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <a th:href="@{/eliminar(idPersona=${person.idPersona})}" class="btn btn-danger btn-block">
+                                <i class="fas fa-trash"></i> [[#{template.person.delete}]]
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -4,37 +4,16 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html xmlns:th="http://www.thymeleaf.org" 
-      xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="layout/template :: head">
         <title>Person's Form</title>
         <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
         <header th:replace="layout/template :: header"></header>
-        <div>[[#{template.person.form}]]</div>
-        <a th:href="@{/}">[[#{template.person.back}]]</a>
-        <br/>
-        <form th:action="@{/save}" method="post" th:object="${person}">
-            <input type="hidden" name="idPerson" th:field="*{idPersona}"/>
-            <label for="name">[[#{template.person.name}]]</label>
-            <input type="text" id="name" th:field="*{name}"/>
-            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">[[#{template.errors.person.name}]]</span>
-            <br/>
-            <label for="surname">[[#{template.person.surname}]]</label>
-            <input type="text" id="surname" th:field="*{surname}"/>
-            <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">[[#{template.errors.person.surname}]]</span>
-            <br/>
-            <label for="email">[[#{template.person.email}]]</label>
-            <input type="text" id="email" th:field="*{email}"/>
-            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">[[#{template.errors.person.email}]]</span>
-            <br/>
-            <label for="phone">[[#{template.person.phone}]]</label>
-            <input type="tel" id="phone" th:field="*{phone}"/>
-            <br/>
-            <input type="submit" name="save" th:value="#{template.person.save}"/>
-        </form>
+        <section th:replace="layout/editClient :: editClient"></section>
         <footer th:replace="layout/template :: footer"></footer>
     </body>
 </html>

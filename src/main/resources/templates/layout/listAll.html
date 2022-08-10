@@ -1,16 +1,73 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Listado Clientes</title>
+        <meta charset="UTF-8"/>
     </head>
     <body>
-        <div>TODO write content</div>
+        <section th:fragment="list" id="clients">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{template.person.list}]]</h4>
+                            </div>
+                            <div th:if="${people != null and !people.empty}">
+                                <table class="table table-stryped">
+                                    <thead class="thead thead-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th th:text="#{template.person.name}">Name</th>
+                                            <th th:text="#{template.person.balance}">Balance</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="person, counter : ${people}">
+                                            <td>[[${counter.count}]]</td>
+                                            <td>[[${person.name}+' '+${person.surname}]]</td>
+                                            <td>[[${new java.text.DecimalFormat('$#,##0.00').format(person.balance)}]]</td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/update/} + ${person.idPersona}" class="btn btn-secondary">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{template.person.edit}]]
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/delete(idPersona=${person.idPersona})}" class="btn btn-dark">
+                                                    <i class="fas fa-angle-double-right"></i> [[#{template.person.delete}]]
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${people == null or people.empty}">
+                                <span th:text="#{template.person.list-empty}"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-center bg-danger text-white mb-3">
+                            <div class="card-body">
+                                <h3 th:text="#{template.person.totalBalance}">Total</h3>
+                                <h4 class="display-4">[[${new java.text.DecimalFormat('$#,##0.00').format(totalBalance)}]]</h4>
+                            </div>
+                        </div>
+                        <div class="card text-center bg-success text-white mb-3">
+                            <div class="card-body">
+                                <h3 th:text="#{template.person.totalClients}"></h3>
+                                <h4 class="display-4">
+                                    <i class="fas fa-users"></i> [[${totalClients}]]
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </body>
 </html>

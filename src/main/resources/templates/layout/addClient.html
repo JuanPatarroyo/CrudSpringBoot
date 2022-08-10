@@ -4,13 +4,54 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add client</title>
+        <meta charset="UTF-8"/>
     </head>
     <body>
-        <div>TODO write content</div>
+        <section th:fragment="addClient">
+            <div id="addClient" class="modal fade">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title" th:text="#{template.person.labelNew}">Add Client</h5>
+                            <button class="close" data-bs-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                        <form th:action="@{/save}" th:object="${person}" method="POST" class="was-validated">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="name" th:text="#{template.person.name}">Name</label>
+                                    <input type="text" class="form-control" name="name" required="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="surname" th:text="#{template.person.surname}">Surname</label>
+                                    <input type="text" class="form-control" name="surname" required="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" th:text="#{template.person.email}">Email</label>
+                                    <input type="email" class="form-control" name="email" required="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone" th:text="#{template.person.phone}">Phone</label>
+                                    <input type="tel" class="form-control" name="phone"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="balance" th:text="#{template.person.balance}">Balance</label>
+                                    <input type="number" class="form-control" name="balance" required="true" step="any"/>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit" th:text="#{template.person.save}"></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
     </body>
 </html>

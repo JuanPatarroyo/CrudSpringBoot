@@ -9,36 +9,8 @@
     <body>
         <header th:replace="layout/template :: header"></header>
         <section th:replace="layout/buttons :: buttons"></section>
-        <!--section th:replace="layout/addClient :: addClient"></section>
-        <section th:replace="layout/listAll :: list"></section-->
+        <section th:replace="layout/addClient :: addClient"></section>
+        <section th:replace="layout/listAll :: list"></section>
         <footer th:replace="layout/template :: footer"></footer>
-        
-        <a sec:authorize="hasRole('ADMIN')" th:href="@{/actionPerson}">[[#{template.person.labelNew}]]</a>
-        <div>
-            <div th:if="${people != null and !people.empty}">
-                <table class="table" border="1">
-                    <tr>
-                        <th>[[#{template.person.name}]]</th>
-                        <th>[[#{template.person.surname}]]</th>
-                        <th>[[#{template.person.email}]]</th>
-                        <th>[[#{template.person.phone}]]</th>
-                        <th sec:authorize="hasRole('ADMIN')">[[#{template.person.edit}]]</th>
-                        <th sec:authorize="hasRole('ADMIN')">[[#{template.person.delete}]]</th>
-                    </tr>
-                    <tr th:each="person : ${people}">
-                        <td th:text="${person.name}">Show name</td>
-                        <td th:text="${person.surname}">Show surname</td>
-                        <td th:text="${person.email}">Show email</td>
-                        <td th:text="${person.phone}">Show phone</td>
-                        <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/update/} + ${person.idPersona}" />[[#{template.person.edit}]]</td>
-                        <td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete(idPersona=${person.idPersona})}"/>[[#{template.person.delete}]]</td>
-                    </tr>
-                </table>
-            </div>
-            <div th:if="${people == null or people.empty}">
-                [[#{template.person.empty}]]
-            </div>
-        </div>
-        
     </body>
 </html>
