@@ -7,32 +7,27 @@
     </head>
     <body>
         <header th:replace="layout/template :: header"></header>
-        <section id="actions" class="py-4 mb-4 bg-light">
-            <div class="container">
-                <div class="row">
-
-                </div>
-            </div>
-        </section>
-        <section id="login">
+        <section id="login" class="pt-5">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 mx-auto">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Login</h4>
+                                <h4>[[#{template.login}]]</h4>
                             </div>
                             <div class="card-body">
-                                <form method="POST" th:action="@{/login}">
+                                <form method="POST" th:action="@{/login}" class="was-validated">
                                     <div class="form-group">
-                                        <label for="username">Username:</label>
-                                        <input type="text" id="username" name="username"/>
+                                        <label for="username">User:</label>
+                                        <input type="text" id="username" name="username" class="form-control" required="true"/>
                                     </div>
                                     <div class="form-group">
-                                        <label for="password">Password:</label>
-                                        <input type="password" id="password" name="password"/>
+                                        <label for="password">Pass:</label>
+                                        <input type="password" id="password" name="password" class="form-control" required="true"/>
                                     </div>
-                                    <input type="submit" value="Login" class="btn btn-primary btn-block"/>
+                                    <div class="form-group mt-2">
+                                        <input type="submit" value="Login" class="btn btn-dark"/>
+                                    </div>
                                 </form>
                             </div>
                         </div>

@@ -32,13 +32,13 @@
                                             <td>[[${person.name}+' '+${person.surname}]]</td>
                                             <td>[[${new java.text.DecimalFormat('$#,##0.00').format(person.balance)}]]</td>
                                             <td>
-                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/update/} + ${person.idPersona}" class="btn btn-secondary">
-                                                    <i class="fas fa-angle-double-right"></i> [[#{template.person.edit}]]
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/update/} + ${person.idPersona}" class="btn btn-primary">
+                                                    <i class="fas fa-user-edit"></i> [[#{template.person.edit}]]
                                                 </a>
                                             </td>
                                             <td>
-                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/delete(idPersona=${person.idPersona})}" class="btn btn-dark">
-                                                    <i class="fas fa-angle-double-right"></i> [[#{template.person.delete}]]
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/delete(idPersona=${person.idPersona})}" class="btn btn-danger">
+                                                    <i class="fas fa-user-times"></i> [[#{template.person.delete}]]
                                                 </a>
                                             </td>
                                         </tr>
@@ -51,16 +51,16 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="card text-center bg-danger text-white mb-3">
+                        <div class="card text-center text-white mb-3 card-info-app" >
                             <div class="card-body">
                                 <h3 th:text="#{template.person.totalBalance}">Total</h3>
-                                <h4 class="display-4">[[${new java.text.DecimalFormat('$#,##0.00').format(totalBalance)}]]</h4>
+                                <h4 class="display-5">[[${new java.text.DecimalFormat('$#,##0.00').format(totalBalance)}]]</h4>
                             </div>
                         </div>
-                        <div class="card text-center bg-success text-white mb-3">
+                        <div class="card text-center text-white mb-3 card-info-app">
                             <div class="card-body">
                                 <h3 th:text="#{template.person.totalClients}"></h3>
-                                <h4 class="display-4">
+                                <h4 class="display-5">
                                     <i class="fas fa-users"></i> [[${totalClients}]]
                                 </h4>
                             </div>

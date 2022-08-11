@@ -12,10 +12,9 @@ and open the template in the editor.
         <meta charset="UTF-8"/>
     </head>
     <body>
-        <section th:fragment="editClient">
+        <section th:fragment="editClient" class="mt-4">
             <form th:action="@{/save}" method="post" th:object="${person}" class="was-validated">
                 <input type="hidden" name="idPerson" th:field="*{idPersona}"/>
-                <section th:replace="layout/buttons :: editButtons"></section>
                 <div id="details">
                     <div class="container">
                         <div class="row">
@@ -55,6 +54,7 @@ and open the template in the editor.
                         </div>
                     </div>
                 </div>
+                <section th:replace="layout/buttons :: editButtons"></section>
             </form>
         </section>
     </body>
